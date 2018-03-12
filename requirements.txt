@@ -8,3 +8,5 @@ MarkupSafe        1.0
 pip               9.0.1  
 setuptools        28.8.0 
 Werkzeug          0.14.1 
+flask-testing     0.7.1
+selenium          3.11.0
