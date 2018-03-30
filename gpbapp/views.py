@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 import json
 from flask import Flask, render_template, request
-from .utils.googleapi import geocode_request
 from .utils.parserkiller import get_address
 app = Flask(__name__)
 

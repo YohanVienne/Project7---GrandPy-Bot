@@ -11,30 +11,26 @@ function initMap() {
 
     document.getElementById('submit').addEventListener('click', function() {
         var userQuestion = document.getElementById('userQuestion').value;
-        var address;
-        requestQuestion(readData, userQuestion);
-        console.log(address);
-        //geocodeAddress(geocoder, map, address);
+        requestQuestion(geocoder, map, userQuestion);
     });
 }
 
 // Request the user question to the API
-function requestQuestion(callBack, userQuestion) {
+function requestQuestion(geocoder, map, userQuestion) {
     var reqQuestion = new XMLHttpRequest();
     var encodeVar = encodeURIComponent(userQuestion);
     reqQuestion.open("GET", "http://localhost:5000/question/" + encodeVar);
     reqQuestion.onreadystatechange = function () {
         if (reqQuestion.readyState == 4 && (reqQuestion.status >= 200 || reqQuestion.status == 0)) {
-            callBack(reqQuestion.responseText);
+            var readData = reqQuestion.responseText;
+            console.log("readData: " + readData);
+            geocodeAddress(geocoder, map, readData);
         }
     };
     reqQuestion.send(null);
 }
 
-function readData(sData) {
-    address = sData
-}
-
+// Mark the position on map
 function geocodeAddress(geocoder, resultsMap, address) {
     geocoder.geocode({'address' : address}, function(results, status) {
         if (status === 'OK') {
@@ -44,7 +40,7 @@ function geocodeAddress(geocoder, resultsMap, address) {
             position: results[0].geometry.location
         });
         } else {
-            alert('Geocode was not successful for the following reason: ' + status);
+            alert("Je n'ai pas compris ta question ");
         }
     });
 }
