@@ -10,27 +10,30 @@ function initMap() {
     var geocoder = new google.maps.Geocoder();
 
     document.getElementById('submit').addEventListener('click', function() {
-        address = requestQuestion(document.getElementById('userQuestion').value);
+        var userQuestion = document.getElementById('userQuestion').value;
+        var address;
+        requestQuestion(readData, userQuestion);
         console.log(address);
         //geocodeAddress(geocoder, map, address);
     });
 }
 
 // Request the user question to the API
-function requestQuestion(userQuestion) {
+function requestQuestion(callBack, userQuestion) {
     var reqQuestion = new XMLHttpRequest();
     var encodeVar = encodeURIComponent(userQuestion);
-    reqQuestion.open("POST", "http://localhost:5000/question");
-    reqQuestion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    reqQuestion.open("GET", "http://localhost:5000/question/" + encodeVar);
     reqQuestion.onreadystatechange = function () {
         if (reqQuestion.readyState == 4 && (reqQuestion.status >= 200 || reqQuestion.status == 0)) {
-            return reqQuestion.responseText;
+            callBack(reqQuestion.responseText);
         }
     };
-    reqQuestion.send('question=' + encodeVar);
-
+    reqQuestion.send(null);
 }
 
+function readData(sData) {
+    address = sData
+}
 
 function geocodeAddress(geocoder, resultsMap, address) {
     geocoder.geocode({'address' : address}, function(results, status) {

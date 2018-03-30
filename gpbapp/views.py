@@ -15,13 +15,12 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/question', methods=['POST'])
-def question():
+@app.route('/question/<sentence>')
+def question(sentence):
     """Get the user question, parse it and show the address on map"""
-    question = request.form['question']
-    parserQuestion = get_address(question)
+    parserQuestion = get_address(sentence)
     print(parserQuestion)
-    return "OK"
+    return parserQuestion
 
 #if __name__ == "__main__":
 #    app.run()
