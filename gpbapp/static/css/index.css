@@ -1,11 +1,104 @@
+@font-face {
+    font-family: 'blackjack_regular_macroman';
+    src: url('../font/blackjack_regular_macroman/blackjack-webfont.eot');
+    src: url('../font/blackjack_regular_macroman/blackjack-webfont.svg') format('svg'),
+         url('../font/blackjack_regular_macroman/blackjack-webfont.ttf') format('truetype'),
+         url('../font/blackjack_regular_macroman/blackjack-webfont.woff') format('woff');
+}
 #map {
-    height: 100%;
+    height: 300px;
+    width: 60%;
+    margin: auto;
+    border-radius: 10px 10px 10px 10px;
 }
 
-html,
 body {
-    height: 80%;
-    width: 80%;
-    margin: 0;
-    padding: 0;
+    text-align: center;
+    background-color: rgba(74, 235, 82, 0.795);
+    font-family: 'blackjack_regular_macroman', calibri, Arial;
+    
+}
+
+#user_question, #button {
+    box-shadow: 6px 6px 20px black;
+    border-radius: 10px 5px 10px 5px;
+    padding: 5px;
+}
+
+h1{
+    
+    margin-bottom: 15px;
+}
+
+#title_index {
+    margin-top: 5%;
+    margin-bottom: 100px;
+    font-size: 1.6em
+}
+
+form {
+    margin-bottom: 40px;
+    
+}
+
+#submit {
+    margin-left: 15px;
+    background-color: orange;
+    border-color: orange;
+    font-family : 'blackjack_regular_macroman';
+    font-weight: bold;
+    
+}
+
+#userQuestion {
+    width: 300px;
+}
+
+body {
+    animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    /* Firefox */
+    -webkit-animation: fadein 2s;
+    /* Safari et Chrome */
+    -o-animation: fadein 2s;
+    /* Opera */
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    /* Firefox */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+    /* Opera */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

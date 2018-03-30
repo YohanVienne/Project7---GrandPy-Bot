@@ -24,7 +24,7 @@ def split_user_question(user_question):
     parse_list_question = re.split(r'\W+', user_question)
     return parse_list_question
 
-def get_address( user_question):
+def get_address(user_question):
     """ Parse the user question to extract the adress """
     output_address = []
     list_sentence = split_user_question(user_question)
