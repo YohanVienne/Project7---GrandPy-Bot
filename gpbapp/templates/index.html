@@ -17,6 +17,10 @@
             <input type="button" value="Dit moi tous !" id="submit">
         </form>
         <div id="map"></div>
+        <div id="wikiText">
+            <p class="text"></p>
+            <a class="linkWiki" href="">Pour en savoir plus...</a>
+        </div>
         <script src="{{url_for('static', filename='js/index.js')}}" type="text/javascript"></script>
         <script src="{{url_for('static', filename='js/ajaxGet.js')}}" type="text/javascript"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key={{ config['GOOGLE_APP_ID']}}&callback=initMap" async defer></script>
