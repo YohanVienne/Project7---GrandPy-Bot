@@ -13,7 +13,6 @@ def req_wikimedia(wikiLocation):
     req = requests.get(url + wikiLocation)
     if req.status_code == 200:
         wikiReq = req.json()
-        print("wikiReq: " + str(wikiReq))
     else:
         print("The Wiki request has failed with the html error:" + str(req.status_code))
     return wikiReq
@@ -25,7 +24,6 @@ def req_story(wikiRequest, ranStory):
     req = requests.get(url + str(pageId))
     if req.status_code == 200:
         result = req.json()
-        print("reqStory: " + str(result))
         wikiReq = result['query']['pages']
     else:
         print("The Wiki request has failed with the html error:" + str(req.status_code))

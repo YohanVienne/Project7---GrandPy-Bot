@@ -16,7 +16,6 @@ body {
     text-align: center;
     background: linear-gradient(to right, rgb(63, 238, 40), rgb(151, 240, 139), rgb(63, 238, 40));
     font-family: 'blackjack_regular_macroman', calibri, Arial;
-    
 }
 
 #userQuestion, #submit {
@@ -27,19 +26,16 @@ body {
 
 h1 {
     margin-top: 15px;
-    margin-bottom: 10px;
     font-size: 4.9em;
-    margin-bottom: 5px;
 }
 
 #secondTitle {
     font-size: 2.5em;
-    margin-bottom: 100px;
+    margin-bottom: 5%;
 }
 
 form {
-    margin-bottom: 40px;
-    
+    margin-bottom: 40px; 
 }
 
 #submit {
@@ -48,18 +44,17 @@ form {
     border-color: orange;
     font-family : 'blackjack_regular_macroman';
     font-weight: bold;
-    
 }
 
 #userQuestion {
-    width: 300px;
+    width: 400px;
 }
 
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    min-height: 100vh;
     animation: fadein 2s;
     -moz-animation: fadein 2s;
     /* Firefox */
@@ -67,6 +62,10 @@ body {
     /* Safari et Chrome */
     -o-animation: fadein 2s;
     /* Opera */
+}
+
+#content {
+    flex-grow: 1;
 }
 
 .text {
@@ -85,7 +84,45 @@ body {
 footer {
     background-color: orange;
     line-height: 10%;
+    width: 100%;
+    height: 80px;
+}
+
+#footText {
+    padding-bottom: 10%;
+}
+
+@media all and (max-device-width: 480px) {
+    h2 {
+        display: none;
+    }
+
+    body {
+        font-size: 1.9em;
+    }
+    h3 {
+        font-size: 1.6em;
+    }
     
+    #userQuestion, #submit {
+        font-size: 1.5em;
+        width: auto;
+    }
+
+    .text {
+        margin: 5%;
+    }
+
+    footer {
+        line-height: 10%;
+        font-size: 1.3em;
+    }
+
+    #map {
+        width: 90%;
+        height: 400px;
+        font-size: 1.3em;
+    }
 }
 
 @keyframes fadein {

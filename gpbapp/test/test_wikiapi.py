@@ -21,7 +21,8 @@ def test_req_wikimedia():
         assert result == {'a': 'b'}
 
 def test_req_story():
-    """test the req_story function with mock"""
+    """test the req_story function with mock: Get the req_wikimedia result
+        and a random page in this result and request the API to get an extract story"""
     wikiRequest = {'batchcomplete': '', 'query': {'geosearch': [{'pageid': 121171, 'ns': 0,
                     'title': 'Ports de Paris', 'lat': 48.856614, 'lon': 2.3522219, 'dist': 0,
                     'primary': ''}, {'pageid': 7738248, 'ns': 0, 'title': "Deaflympics d'été de 1924",
@@ -45,7 +46,13 @@ def test_req_story():
                 'extract': "La mairie de Paris, sise à l'hôtel de ville de la capitale, est le siège de l'administration dirigée par les élus municipaux et départementaux de Paris.\n\n\n == Histoire ==\n\n\n === Sous l'Ancien Régime ===\nLa première municipalité parisienne est constituée vers 1260, lorsque Saint Louis octroie aux prévôts et jurés de la puissante corporation des marchands de l'eau le droit d'administrer une partie de la cité. Cette association détient alors le monopole de la navigation sur la Seine, l'Oise, la Marne et l'Yonne, réglemente le trafic du fleuve et fixe les taxes à percevoir."}]}}
 
     resultNeed = [{'pageid': 49947, 'ns': 0, 'title': 'Mairie de Paris',
-               'extract': "La mairie de Paris, sise à l'hôtel de ville de la capitale, est le siège de l'administration dirigée par les élus municipaux et départementaux de Paris.\n\n\n == Histoire ==\n\n\n === Sous l'Ancien Régime ===\nLa première municipalité parisienne est constituée vers 1260, lorsque Saint Louis octroie aux prévôts et jurés de la puissante corporation des marchands de l'eau le droit d'administrer une partie de la cité. Cette association détient alors le monopole de la navigation sur la Seine, l'Oise, la Marne et l'Yonne, réglemente le trafic du fleuve et fixe les taxes à percevoir."}]
+               'extract': "La mairie de Paris, sise à l'hôtel de ville de la capitale,"
+                " est le siège de l'administration dirigée par les élus municipaux et départementaux de Paris.\n\n\n"
+                " == Histoire ==\n\n\n === Sous l'Ancien Régime ===\nLa première municipalité parisienne est constituée vers 1260,"
+                " lorsque Saint Louis octroie aux prévôts et jurés de la puissante corporation des marchands"
+                " de l'eau le droit d'administrer une partie de la cité. Cette association détient alors"
+                " le monopole de la navigation sur la Seine, l'Oise, la Marne et l'Yonne,"
+                " réglemente le trafic du fleuve et fixe les taxes à percevoir."}]
 
     with requests_mock.Mocker() as m:
         m.get(

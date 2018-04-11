@@ -26,17 +26,13 @@ def question(sentence):
    
     # Get location for Google Map API marker
     geoLat, geoLng = geocode_request(parserQuestion)
-    print("Google location: " + str(geoLat) + ", " +str(geoLng))
 
     # Get random story & title for Wiki Media API
     wikiLocation = str(geoLat) + "|" + str(geoLng)
-    print("Wiki location: " + wikiLocation)
     wikiRequest = req_wikimedia(wikiLocation)
     lenResult = len(wikiRequest['query']['geosearch'])
-    print("lenResult = " + str(lenResult))
     if lenResult >=1:
         ranStory = random.randrange(lenResult)
-        print("ran = " + str(ranStory))
         story = req_story(wikiRequest, ranStory)
     else:
         story = "Je ne me rapelle de rien concernant ce lieux..."
@@ -53,7 +49,6 @@ def question(sentence):
         data['title'] = title
         data['story'] = story
     jsonData = json.dumps(data, ensure_ascii=False, indent=4)
-    print("jsonData: " + str(jsonData))
     return jsonData
 
     

@@ -24,11 +24,10 @@ function requestQuestionMap(map, userQuestion) {
     reqQuestion.onreadystatechange = function () {
         if (reqQuestion.readyState == 4 && (reqQuestion.status >= 200 || reqQuestion.status == 0)) {
             var readData = JSON.parse(reqQuestion.responseText);
-            console.log("readData: " + readData);
+            
             
             // Show the map
             var location = new google.maps.LatLng(readData.lat, readData.lng);
-            console.log(location);
             map.setCenter(location);
             var marker = new google.maps.Marker({
             map: map,
