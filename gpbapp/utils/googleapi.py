@@ -1,15 +1,22 @@
 #!/usr/bin/python
-import googlemaps
 import config
+import requests
 
-gmaps = googlemaps.Client(key=config.GOOGLE_APP_ID)
 
-def geocode_request(user_address):
-    """ Get coordinate from Geocoding API with the parser user question """
-    geo_result = gmaps.geocode(user_address)
-    if geo_result:
-        coordinate_lat = geo_result[0]["geometry"]["location"]["lat"]
-        coordinate_lng = geo_result[0]["geometry"]["location"]["lng"]
-        return coordinate_lat, coordinate_lng
+url = "https://maps.googleapis.com/maps/api/geocode/json"
+
+def geocode_request(userAddress):
+    payload = {'address': userAddress, 'key': config.GOOGLE_APP_ID}
+    req = requests.get(url, params=payload)
+    if req.status_code == 200:
+        if req:
+            result = req.json()
+            print(result["results"][0]['geometry']['location']['lat'])
+            coordinate_lat = result["results"][0]['geometry']['location']['lat']
+            coordinate_lng = result["results"][0]['geometry']['location']['lng']
+            return coordinate_lat, coordinate_lng
+        else:
+            return "none"
     else:
-        return "none"
+        print("The Geo_Code request has failed with the html error:" +
+              str(req.status_code))

@@ -6,11 +6,14 @@ Wiki Media function
 import json
 import requests
 
+url = "https://fr.wikipedia.org/w/api.php"
+
 def req_wikimedia(wikiLocation):
     ''' Request the API with location, get some page around the location,
     get a random page in result and return to the HTML page'''
-    url = "https://fr.wikipedia.org/w/api.php?action=query&format=json&uselang=fr&list=geosearch&gscoord="
-    req = requests.get(url + wikiLocation)
+    payload = {'action': 'query', 'format': 'json', 'uselang': 'fr',
+                'list': 'geosearch', 'gscoord': wikiLocation}
+    req = requests.get(url, params=payload)
     if req.status_code == 200:
         wikiReq = req.json()
     else:
@@ -19,9 +22,11 @@ def req_wikimedia(wikiLocation):
 
 def req_story(wikiRequest, ranStory):
     ''' Get a random story from the geosearch'''
-    url = "https://fr.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&utf8=1&formatversion=latest&exsentences=3&explaintext=1&exsectionformat=wiki&pageids="
     pageId = wikiRequest['query']['geosearch'][ranStory]['pageid']
-    req = requests.get(url + str(pageId))
+    payload = {'action': 'query', 'format': 'json', 'prop': 'extracts',
+                'utf8': '1', 'formatversion': 'latest', 'exsentences': '3',
+                'explaintext': '1', 'exsectionformat': 'wiki', 'pageids': pageId}
+    req = requests.get(url, params=payload)
     if req.status_code == 200:
         result = req.json()
         wikiReq = result['query']['pages']

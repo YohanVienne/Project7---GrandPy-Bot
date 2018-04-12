@@ -20,7 +20,7 @@ function initMap() {
 function requestQuestionMap(map, userQuestion) {
     var reqQuestion = new XMLHttpRequest();
     var encodeVar = encodeURIComponent(userQuestion);
-    reqQuestion.open("GET", "http://localhost:5000/question/" + encodeVar);
+    reqQuestion.open("GET", "/question/" + encodeVar);
     reqQuestion.onreadystatechange = function () {
         if (reqQuestion.readyState == 4 && (reqQuestion.status >= 200 || reqQuestion.status == 0)) {
             var readData = JSON.parse(reqQuestion.responseText);
