@@ -1,6 +1,10 @@
 #!/usr/bin/python
-import config
+''' Google APi module
+    Author: Yohan Vienne
+    Version: 1.0 ''' 
+
 import requests
+import config
 
 
 url = "https://maps.googleapis.com/maps/api/geocode/json"
@@ -12,8 +16,6 @@ def geocode_request(userAddress):
     if req.status_code == 200:
         if req:
             result = req.json()
-            print(result["results"][0]['geometry']['location']['lat'])
-            print(result["results"][0]['geometry']['location']['lng'])
             coordinate_lat = result["results"][0]['geometry']['location']['lat']
             coordinate_lng = result["results"][0]['geometry']['location']['lng']
             return coordinate_lat, coordinate_lng

@@ -1,5 +1,11 @@
 #! /usr/bin/env python
-import json, random
+''' Views of the app 
+    Author: Yohan Vienne
+    Version: 1.0
+'''
+
+import json
+import random
 
 import requests
 from flask import Flask, render_template, request

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 ''' 
-Wiki Media function
+Wiki Media API module
+Author: Yohan Vienne
+Version: 1.0
 '''
 
 import json

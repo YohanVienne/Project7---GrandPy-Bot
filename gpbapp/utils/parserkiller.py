@@ -3,10 +3,14 @@
 Parserkiller get the question of user and parser it to get the adress for Google map API
 
 Author : Yohan Vienne
-version : 0.1
+version : 1.0
 """
 
-import json, os, re, io
+import json
+import os
+import re
+import io
+
 
 
 #Get the stopWords json into a list 
