@@ -28,6 +28,6 @@ def test_geocode_request():
                 'types': ['locality', 'political']}], 'status': 'OK'}
 
     with requests_mock.Mocker() as m:
-        m.get('https://maps.googleapis.com/maps/api/geocode/json?address=paris&key=AIzaSyCArFwBJbf9on41KLPCphPvK5R7mZ60QYk', json=result)
+        m.get('https://maps.googleapis.com/maps/api/geocode/json?address=paris&key=' + config.GOOGLE_APP_ID, json=result)
         req = geocode_request('paris')
         assert req == (48.856614, 2.3522219)
