@@ -8,10 +8,6 @@ import requests
 import requests_mock
 
 
-def test_type_result_req_wikimedia():
-    """ test the type of answer """
-    assert type(req_wikimedia("48.957802|1.812542")) == dict
-
 
 def test_req_wikimedia():
     """test the req_wikimedia function with mock"""
